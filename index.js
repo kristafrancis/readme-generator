@@ -1,5 +1,7 @@
 // TODO: Include packages needed for this application
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 const inquirer = require('inquirer');
+const generatePage = require('')
 const fs = require('fs');
 //const { title } = require('process');
 const generateMarkdown = require('./utils/generateMarkdown.js');
@@ -11,7 +13,7 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'title',
-            message: 'What is your project title? (Required)',
+            message: 'What is the title of your project? (Required)',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -75,19 +77,6 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'license',
-            message: 'What is your project license? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your project license!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
             name: 'contributing',
             message: 'Who contributed to this project? (Required)',
             validate: nameInput => {
@@ -102,7 +91,7 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'tests',
-            message: 'What tests have been done? (Required)',
+            message: 'What tests have been done on your project? (Required)',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -113,18 +102,50 @@ const promptUser = () => {
             }
         },
         {
-            type: 'input',
-            name: 'questions',
-            message: 'GitHib user name and email address? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
+            type: 'confirm',
+            name: 'confirmLicenses',
+            message: 'Would you like to include a license?',
+            default: false
+        },
+        {
+            type: 'list',
+            name: 'licenses',
+            message: 'What license would you like to include?',
+            choices: ['MIT', 'GPL', 'CC--0'],
+            when: ({ confirmLicenses }) => {
+                if (confirmLicenses) {
                     return true;
                 } else {
-                    console.log('Please enter your questions!');
                     return false;
                 }
             }
-        }
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Enter your GitHub username:',
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log('Please provide a link to your GitHub repo so users know where to find more of your work');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address:',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please provide an email address so user know how to contact you');
+                    return false;
+                }
+            }
+        },
     ])
 }
 
