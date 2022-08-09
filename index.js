@@ -1,13 +1,13 @@
 // TODO: Include packages needed for this application
 const { writeFile, copyFile } = require('./utils/generate-site.js');
 const inquirer = require('inquirer');
-const generatePage = require('')
+//const generatePage = require('')
 const fs = require('fs');
 //const { title } = require('process');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
-//const questions = [];
+const questions = [];
 const promptUser = () => {
     return inquirer.prompt([
         {
