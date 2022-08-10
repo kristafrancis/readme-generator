@@ -1,5 +1,5 @@
 // TODO: Include packages needed for this application
-const { writeFile, copyFile } = require('./utils/generate-site.js');
+const { writeFile, copyFile } = require('./dist/generate-site.js');
 const inquirer = require('inquirer');
 //const generatePage = require('')
 const fs = require('fs');
@@ -12,110 +12,13 @@ const promptUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'title',
-            message: 'What is the title of your project? (Required)',
+            name: 'name',
+            message: 'What is your name?:',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log('Please enter your title!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'description',
-            message: 'What is a description of your project? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your projects description!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'table of contents',
-            message: 'Enter your projects table of contents? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter what your projects table of contents!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'installation',
-            message: 'What is your project installed with? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter what your project is installed with!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'usage',
-            message: 'How is your project used? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter how your project is used!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'contributing',
-            message: 'Who contributed to this project? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter who contributed to this project!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'tests',
-            message: 'What tests have been done on your project? (Required)',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter your tests!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'confirm',
-            name: 'confirmLicenses',
-            message: 'Would you like to include a license?',
-            default: false
-        },
-        {
-            type: 'list',
-            name: 'licenses',
-            message: 'What license would you like to include?',
-            choices: ['MIT', 'GPL', 'CC--0'],
-            when: ({ confirmLicenses }) => {
-                if (confirmLicenses) {
-                    return true;
-                } else {
+                    console.log('Please enter your name!');
                     return false;
                 }
             }
@@ -146,6 +49,105 @@ const promptUser = () => {
                 }
             }
         },
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is the title of your project? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your title!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'description',
+            message: 'What is a description of your project? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your projects description!');
+                    return false;
+                }
+            }
+        },
+        
+        {
+            type: 'input',
+            name: 'installation',
+            message: 'What should be installed to run your project? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter what should be installed to run your project!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'usage',
+            message: 'What does the user need to know about using the repo? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter what the user needs to know about using the repo!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'contributing',
+            message: 'What does the user need to know about contributing to the repo? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter what the user needs to know about contributing to the repo!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'tests',
+            message: 'What command should be run to run tests? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter what command should be run to run tests!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'confirm',
+            name: 'confirmLicenses',
+            message: 'Would you like to include a license?',
+            default: false
+        },
+        {
+            type: 'list',
+            name: 'licenses',
+            message: 'What license would you like to include?',
+            choices: ['MIT', 'GPL', 'CC--0'],
+            when: ({ confirmLicenses }) => {
+                if (confirmLicenses) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },
+        
     ])
 }
 
