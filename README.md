@@ -47,3 +47,5 @@ Have questions about this project?
 ## Credits
 
 Krista Francis
+
+Screen Shot 2022-08-11 at 1.40.41 PM.png
