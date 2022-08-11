@@ -9,16 +9,16 @@
   * [Questions](#questions)
   * [Credits](#credits)
   ## Description
-  It's a project that creates a README.md file for you by asking you a series of questions.
+  It creates a README.md file for you by asking you a series of questions.
   ## Installation
   npm i
   ## Usage
-  Simply enter node index into the terminal and answer the question to generate your README.md file.
+  Simply enter node index in the terminal and answer the questions to generate your README.
   ## Licenses
  [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
     This project is covered under the MIT license. To learn more about what this means, click the license button at the top.
   ## Contributing
-  If you would like to contribute to this project please contact me.
+  If you would like to contribe to this project please contact me.
   ## Tests
   node index
   ## Questions
