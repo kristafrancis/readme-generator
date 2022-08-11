@@ -1,9 +1,7 @@
 // TODO: Include packages needed for this application
 const { writeFile, copyFile } = require('./dist/generator-site.js');
 const inquirer = require('inquirer');
-//const generatePage = require('')
 const fs = require('fs');
-//const { title } = require('process');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
@@ -90,12 +88,12 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'What does the user need to know about using the repo? (Required)',
+        message: 'What does the user need to know about using your project? (Required)',
         validate: nameInput => {
             if (nameInput) {
                 return true;
             } else {
-                console.log('Please enter what the user needs to know about using the repo!');
+                console.log('Please enter what the user needs to know about using your project!');
                 return false;
             }
         }
